@@ -4,6 +4,7 @@ from PIL import Image # Python library for image processing
 
 from util import *  # Local library of utility functions
 
+
 report_list = [] # list of reports made during the program execution
 
 def spectral_segmentation(img, smallest_segment_size = 256):
@@ -83,6 +84,7 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 	for i in range(len(E)):
 		a, b = E[i]
 		
+		# a and b coordinates
 		ca = np.array(coord(a))
 		cb = np.array(coord(b))
 		

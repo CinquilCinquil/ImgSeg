@@ -1,6 +1,7 @@
 import numpy as np
-from PIL import Image # Python library for image processing
 from scipy import ndimage
+from PIL import Image # Python library for image processing
+
 
 def get_value(t):
 
@@ -154,10 +155,20 @@ def print_mat(I):
 	return return_str
 	
 def report(txt, report_list):
+
+	"""
+	Prints and registers a report
+	"""
+
 	print(txt)
 	report_list.append(txt)
 
 def create_report(report_list, img_name):
+
+	"""
+	Saves reports in a file
+	"""
+
 	img_name = img_name.split("/")[1]
 	reportfile_name = "reports/report_for_" + img_name.replace(".png", '').replace(".jpg", '') + ".txt"
 	

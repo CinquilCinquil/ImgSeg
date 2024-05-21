@@ -6,16 +6,14 @@ from image_segmentation import image_segmentation
 filename = "berkeley_tests/295087.jpg"
 smallest_segment_size = 256
 
-image_segmentation(filename, smallest_segment_size)	
-
-exit()
+#image_segmentation(filename, smallest_segment_size)	
 
 print("--------------------------")
 print("Bem-vindo!\n")
 print("--------------------------\n")
 
 print("Esse é um programa que segmenta imagens com a intenção de destacar certos elementos.\n")
-i = input("Digite:\n0 - Para escolher um teste no banco de dados.\n1 - Para sair do programa.")
+i = input("Digite:\n0 - Para escolher um teste no banco de dados.\n1 - Para sair do programa.\n")
 
 if i == "1":
 	exit()
