@@ -1,8 +1,11 @@
 from image_segmentation import image_segmentation
 
-filename = "test_files/test1.png"
+filename = "test_files/test3.png"
 smallest_segment_size = 256
 
+image_segmentation(filename, smallest_segment_size)
+
+"""
 print("--------------------------")
 print("Welcome! | Bem-vindo!\n")
 print("--------------------------\n")
@@ -34,3 +37,4 @@ print(line3)
 generatedfile_name = image_segmentation(filename, smallest_segment_size)
 
 print(line4 + generatedfile_name)
+"""

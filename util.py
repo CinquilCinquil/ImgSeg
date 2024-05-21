@@ -72,23 +72,8 @@ def define_grad(A):
 def find_borders(S, w, h):
 
 	"""
-	Returns the borders of a binary tree of partitions S
+	Returns the borders of a partition of S
 	"""
-
-	# Turning tree into a list of parts
-	parts = []
-	
-	def flatten(S):
-	
-		# arrived at a leaf
-		if not isinstance(S[0], list):
-			parts.append(S)
-			return
-		
-		for s in S:
-			flatten(s)
-			
-	flatten(S)
 	
 	# Local utils
 	
@@ -99,7 +84,7 @@ def find_borders(S, w, h):
 	# returns whether a and b are in different parts
 	def dif(a, b):
 		a = a[0] + a[1]*w # converting back to pixel id
-		return any([(a in s and b not in s) for s in parts])
+		return any([(a in s and b not in s) for s in S])
 	
 	# returns if pixel is in a border
 	def in_border(v):
@@ -137,63 +122,50 @@ def coarse_image(I, new_w = 32):
 	
 	new_h = int(new_w * (h/w))
 	
-	return I.resize((new_w, new_h), Image.Resampling.BICUBIC)
+	return I.resize((new_w, new_h), Image.BICUBIC)
 	
 def scale_partition(S, old_w, old_h, w, h):
 
 	"""
 	Returns partition scaled up
 	"""
+
+	# Turning tree into a list of parts
+	parts = []
 	
-	#
-	def add_to_part(a, b):
+	def flatten(S):
+	
+		# arrived at a leaf
 		if not isinstance(S[0], list):
-			
-			if b in S:
-				S.append(str(a))
-			
+			parts.append(S)
 			return
-			
-		for s in S:
-			add_to_part(a, b)
 		
-	#
+		for s in S:
+			flatten(s)
+			
+	flatten(S)
+
+	S_new = [[] for i in range(len(parts))] # partition to be returned
+	
+	# adds pixels to new partition considering old partition
+	def add_to_part(new_p, old_p):
+
+		for i in range(len(parts)):
+			if old_p in parts[i]:
+				S_new[i].append(new_p)
+
+	w_r = w // old_w
+	h_r = h // old_h
+
+	# adding new pixels considering a mapping from (old_w, old_h) to (w, h)
 	for i in range(w):
 		for j in range(h):
-			i_ = i // old_w
-			j_ = j // old_h
+			i_ = i // w_r
+			j_ = j // h_r
 			
-			add_to_part(i + j*w, i_ + j_*old_h)
-		
-	#
-	def remove_ints(S):
-		if not isinstance(S[0], list):
-			
-			for s in S:
-				if not isinstance(s, str):
-					S.remove(s)
-			
-			return
-			
-		for s in S:
-			remove_ints(s)
-		
-	#
-	def str_to_int(S):
-		if not isinstance(S[0], list):
-			
-			for i in range(len(S)):
-				S[i] = int(S[i])
-			
-			return
-			
-		for s in S:
-			str_to_int(s)
+			add_to_part(i + j*w, i_ + j_*old_w)
 	
-	remove_ints(S)	
-	str_to_int(S)
-	
-	return S
+	return S_new
 	
 
 def print_mat(I):

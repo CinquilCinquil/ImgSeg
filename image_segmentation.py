@@ -188,6 +188,8 @@ def image_segmentation(filename, smallest_segment_size = 256):
 	
 	# scaling partition to original image dimensions
 	scaled_partition = scale_partition(graph_partition, w, h, w_, h_)
+
+	#print(scaled_partition)
 	
 	borders = find_borders(scaled_partition, w_, h_)
 	
