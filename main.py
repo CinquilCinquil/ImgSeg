@@ -1,3 +1,4 @@
+from sys import exit
 from os.path import exists
 
 from image_segmentation import image_segmentation
@@ -25,11 +26,11 @@ if i == "0":
 	if not exists(filename):
 		print("Arquivo não encontrado, verifique se digitou corretamente.")
 		print("Terminando programa.")
-		exit()
+		exit(0)
 	
 if i != "1" and i != "0":
 	print("Entrada inválida!")
-	exit()
+	exit(0)
 
 print("--------------------------")
 print("Processando... Esse processo é O(n) então por favor tenha paciência.")

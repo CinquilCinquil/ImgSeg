@@ -1,5 +1,5 @@
 import numpy as np
-from scipy import ndimage
+from scipy import ndimage # Method for finding the gradient of an image
 from PIL import Image # Python library for image processing
 
 

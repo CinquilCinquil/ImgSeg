@@ -1,7 +1,6 @@
 Timer inicializado.
 Imagem aberta.
 Imagem em menor resolução feita.
-Valores da imagem extraídos.
 Matriz gradiente da imagem feita.
 Grafo feito simples feito.
 Peso das arestas calculado.
@@ -24,6 +23,14 @@ Executando partição recursiva:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 5
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 706
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
 -- Tamanho da partição a ser analisada: 172
 -- Partição pequena demais, caso base antigido.
 Partição espectral do grafo feita.
@@ -31,4 +38,4 @@ Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 3.3864359855651855 segundos.
+Execução finalizada após 4.187863826751709 segundos.
