@@ -1,0 +1,58 @@
+Timer inicializado.
+Imagem aberta.
+Imagem em menor resolução feita.
+Valores da imagem extraídos.
+Matriz gradiente da imagem feita.
+Grafo feito simples feito.
+Peso das arestas calculado.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 1536
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 719
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 181
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 538
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 381
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 148
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 233
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 157
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 817
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 148
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 669
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Distribuição de pixeis muito homogênea, caso base antigido.
+Partição espectral do grafo feita.
+Tamanho da partição aumentado para imagem original.
+Bordas das partições feitas.
+Bordas desenhadas.
+Imagem final salva.
+Execução finalizada após 13.599869966506958 segundos.

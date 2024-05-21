@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image # Python library for image processing
-
+from scipy import ndimage
 
 def get_value(t):
 
@@ -10,63 +10,26 @@ def get_value(t):
 
 	return np.array([t[0] + 1, t[1] + 1])
 	
-def define_grad(A):
+def define_grad(img):
 
 	"""
-	Returns matrix G of gradients based on the values of matrix A
+	Returns matrix G of gradients based on the image
 	"""
 
-	w, h = (len(A[0]), len(A))
+	w,h = img.size
 
-	G = [[0 for j in range(w)] for i in range(h)]
+	# get x-gradient
+	sx = ndimage.sobel(img, axis=0, mode='constant')
 
-	# Local utils
+	# get y-gradient
+	sy = ndimage.sobel(img, axis=1, mode='constant')
 
-	# returns the image coordinates (i.e. (x, y)) from a pixel id
-	def coord(p):
-		return (p - w*(p//w), p//w)
-	
-	# magnitude of 2D array v
-	def mag(v):
-		return (np.dot(v, v))**(1/2)
-	
-	# sums 2D arrays in a list
-	def sumv(l):
-		s = np.array((0, 0))
-		for v in l:
-			s = s + v
-		return s
+	G = [[(
 
-	# calculating the gradient for each value
-	for i in range(h):
-		for j in range(w):
+		100 * np.dot(sx[i][j], sx[i][j]), 100 * np.dot(sy[i][j], sy[i][j])
 		
-			v = A[i][j]
+		) for j in range(w)] for i in range(h)]
 	
-			# the gradient is based on the neighbouring values
-			val_right = 		mag(A[i + 1][j] - v) if i < w - 1 else 0
-			val_left = 			mag(A[i - 1][j] - v) if i > 0 else 0
-			val_top = 			mag(A[i][j - 1] - v) if j > 0 else 0
-			val_bottom = 		mag(A[i][j + 1] - v) if j < h - 1 else 0
-			val_upright = 		mag(A[i + 1][j - 1] - v) if j > 0 and i < w - 1 else 0
-			val_upleft = 		mag(A[i - 1][j - 1] - v) if j > 0 and i > 0 else 0
-			val_bottomright = 	mag(A[i + 1][j + 1] - v) if j < h - 1 and i < w - 1 else 0
-			val_bottomleft = 	mag(A[i - 1][j + 1] - v) if j < h - 1 and i > 0 else 0
-			
-			# vectors representing the variation's direction
-			vec_right = 		(val_right, 0)
-			vec_left = 			(-val_left, 0)
-			vec_top = 			(0, -val_top)
-			vec_bottom = 		(0, val_bottom)
-			vec_upright = 		(val_upright/2, -val_upright/2)
-			vec_upleft = 		(-val_upleft/2, -val_upleft/2)
-			vec_bottomright = 	(val_bottomright/2, val_bottomright/2)
-			vec_bottomleft = 	(-val_bottomleft/2, val_bottomleft/2)
-		
-			# the total gradient is the sum of the variations in their respective directions
-			G[i][j] = sumv([vec_right, vec_left, vec_top, vec_bottom,
-						vec_upleft, vec_upright, vec_bottomright, vec_bottomleft])
-						
 	return G
 		
 def find_borders(S, w, h):
@@ -109,10 +72,10 @@ def find_borders(S, w, h):
 	for i in range(w*h):
 		if in_border(i):
 			borders.append(i)
-		
+
 	return borders
 	
-def coarse_image(I, new_w = 32):
+def coarse_image(I, new_h = 32):
 
 	"""
 	Returns image with lower resolution using Bicubic Interpolation
@@ -120,7 +83,7 @@ def coarse_image(I, new_w = 32):
 	
 	w, h = I.size
 	
-	new_h = int(new_w * (h/w))
+	new_w = int(new_h * (w/h))
 	
 	return I.resize((new_w, new_h), Image.BICUBIC)
 	
@@ -153,15 +116,16 @@ def scale_partition(S, old_w, old_h, w, h):
 		for i in range(len(parts)):
 			if old_p in parts[i]:
 				S_new[i].append(new_p)
+				break
 
-	w_r = w // old_w
-	h_r = h // old_h
+	w_r = w / old_w
+	h_r = h / old_h
 
 	# adding new pixels considering a mapping from (old_w, old_h) to (w, h)
 	for i in range(w):
 		for j in range(h):
-			i_ = i // w_r
-			j_ = j // h_r
+			i_ = int(i / w_r)
+			j_ = int(j / h_r)
 			
 			add_to_part(i + j*w, i_ + j_*old_w)
 	
@@ -173,9 +137,35 @@ def print_mat(I):
 	"""
 	Prints a matrix
 	"""
+	
+	return_str = ""
 
 	for i in range(len(I)):
 		for j in range(len(I[i])):
 			print(I[i][j], end = ' ')
+			return_str += str(I[i][j]) + " "
+		
 		print("")
+		return_str += "\n"
+	
 	print("")
+	return_str += "\n"
+	
+	return return_str
+	
+def report(txt, report_list):
+	print(txt)
+	report_list.append(txt)
+
+def create_report(report_list, img_name):
+	img_name = img_name.split("/")[1]
+	reportfile_name = "reports/report_for_" + img_name.replace(".png", '').replace(".jpg", '') + ".txt"
+	
+	report_file = open(reportfile_name, 'w', encoding = "utf-8")
+	
+	for t in report_list:
+		report_file.write(t + "\n")
+	report_file.close()
+	
+	return reportfile_name
+	

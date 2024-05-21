@@ -1,8 +1,10 @@
+import time
 import numpy as np
 from PIL import Image # Python library for image processing
 
 from util import *  # Local library of utility functions
 
+report_list = [] # list of reports made during the program execution
 
 def spectral_segmentation(img, smallest_segment_size = 256):
 	
@@ -30,11 +32,10 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 	w, h = img.size
 	n = w * h
 	
-	# w by h matrix with pixel values
-	I_ = [[get_value(img.getpixel((j, i))) for j in range(w)] for i in range(h)]
-	
 	# w by h matrix with gradient values
-	grad = define_grad(I_)
+	grad = define_grad(img)
+	
+	report("Matriz gradiente da imagem feita.", report_list)
 	
 	# all necessary data extracted, image not needed anymore
 	img.close()
@@ -44,11 +45,6 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 	# returns the image coordinates (i.e. (x, y)) from a pixel id
 	def coord(p):
 		return (int(p - w*(p//w)), int(p//w))
-	
-	# returns the pixel value from a pixel id
-	def value_at(p):
-		j, i = coord(p)
-		return I_[i][j]
 		
 	# returns the gradient value from a pixel id
 	def grad_at(p):
@@ -77,6 +73,8 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 		for j in range(w - 1):
 			E.append((j + w*i, j + w*(i + 1) + 1)) # \
 			E.append((j + w*(i + 1), j + w*i + 1)) # /
+			
+	report("Grafo feito simples feito.", report_list)
 	
 	## Calculating edge weights
 	
@@ -85,15 +83,16 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 	for i in range(len(E)):
 		a, b = E[i]
 		
-		va = value_at(a)
-		vb = value_at(b)
+		ca = np.array(coord(a))
+		cb = np.array(coord(b))
 		
 		# normalized vector ab
-		dab = ( vb - va )/( (np.dot(va, vb))**(1/2) )
+		d = cb - ca
+		dab = d/((np.dot(d, d))**(1/2))
 		
 		# directional derivative of a and b
 		d1 = np.dot(grad_at(a), dab)
-		d2 = np.dot(grad_at(b), dab)
+		d2 = np.dot(grad_at(b), -dab)
 		
 		g = np.max([d1, d2, 0])
 		nn = 0.00001 #tuning parameter
@@ -101,14 +100,22 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 		weight = 1/(1 + nn*g*g)
 		
 		Ew.append((a, b, weight))
+		
+	report("Peso das arestas calculado.", report_list)
 	
 	### Recursively partitioning graph
 	
 	def recursive_partition(V, depth = 0):
 	
+		report("Executando partição recursiva: ", report_list)
+	
 		n = len(V)
 		
+		report("-- Tamanho da partição a ser analisada: " + str(n), report_list)
+		
 		if n <= smallest_segment_size:
+		
+			report("-- Partição pequena demais, caso base antigido.", report_list)
 			return V
 	
 		## Calculate Laplacian Matrix
@@ -129,68 +136,91 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 			i_ = V.index(i)
 			L[i_][i_] = np.sum(l)
 			
+		report("-- Matriz Laplaciana criada:", report_list)
+			
 		## Calculate L's Fiedler Vector
 		
 		eigen_values, eigen_vectors = np.linalg.eigh(L)
 		F = eigen_vectors[:, 1]
 		
+		report("-- Vetor de Fiedler calculado:", report_list)
+		
 		## Partition
 		
 		s_plus = [] #vertices that are associated with a non negative value in F
 		s_minus = [] #vertices that are associated with a negative value in F
-		
-		# value that represents how evenly matched the distribution is
-		dif = abs( abs(np.max(F)) - abs(np.min(F)) )
-		
-		# stopping recursion if the distribution is evenly matched
-		# i.e. there likely is no element in the current part
-		if dif < 0.01 and depth > 0:
-			return V
-		
+
 		# distributing vertices in their respective parts
 		for i in V:
 			if F[V.index(i)] < 0:
 				s_minus.append(i)
 			else:
 				s_plus.append(i)
-		
-		return [recursive_partition(s_minus, depth + 1), recursive_partition(s_plus, depth + 1)]
+				
+		report("-- Vetores particionados.", report_list)
+
+		# checking if the next partition is too small
+		if len(s_minus) <= 4 or len(s_plus) <= 4:
+			return V
+		else:
+			return [recursive_partition(s_minus, depth + 1), recursive_partition(s_plus, depth + 1)]
 	
 	return recursive_partition(V)
 
 def draw_segmentation(filename, borders):
 
 	I = Image.open(filename)
+	I = I.convert('RGB')
 	w, h = I.size
 
 	for v in borders:
 		j, i = (int(v - w*(v//w)), int(v//w)) # image coordinates
 		I.putpixel((j, i), (255, 0, 0))
+		
+	report("Bordas desenhadas.", report_list)
 
-	new_name = filename.replace(".png", '') + "_partioned.png"
+	new_name = filename.replace(".png", '').replace(".jpg", '') + "_partioned.png"
 
 	I.save(new_name)
 	I.close()
+	
+	report("Imagem final salva.", report_list)
 	
 	return new_name
 
 def image_segmentation(filename, smallest_segment_size = 256):
 
+	start_time = time.time()
+	report("Timer inicializado.", report_list)
+
 	# loading image as matrix of pixels
 	I = Image.open(filename)
+	I = I.convert('RGB')
 	w_, h_ = I.size
+	
+	report("Imagem aberta.", report_list)
 	
 	# generating coarsed image for faster processing
 	I_coarsed = coarse_image(I)
 	w, h = I_coarsed.size
 	
+	report("Imagem em menor resolução feita.", report_list)
+	
 	graph_partition = spectral_segmentation(I_coarsed, smallest_segment_size)
+	
+	report("Partição espectral do grafo feita.", report_list)
 	
 	# scaling partition to original image dimensions
 	scaled_partition = scale_partition(graph_partition, w, h, w_, h_)
-
-	#print(scaled_partition)
+	
+	report("Tamanho da partição aumentado para imagem original.", report_list)
 	
 	borders = find_borders(scaled_partition, w_, h_)
 	
-	return draw_segmentation(filename, borders) #saving copy of image with borders drawn
+	report("Bordas das partições feitas.", report_list)
+	
+	final_image_name = draw_segmentation(filename, borders) #saving copy of image with borders drawn
+	
+	report("Execução finalizada após " + str((time.time() - start_time)) + " segundos.", report_list)
+	
+	return (final_image_name, create_report(report_list, final_image_name))
