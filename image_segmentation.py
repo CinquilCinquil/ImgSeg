@@ -176,12 +176,19 @@ def draw_segmentation(filename, borders):
 
 def image_segmentation(filename, smallest_segment_size = 256):
 
-	# Loading image as matrix of pixels
+	# loading image as matrix of pixels
 	I = Image.open(filename)
-	w, h = I.size
+	w_, h_ = I.size
 	
-	graph_partition = spectral_segmentation(I, smallest_segment_size)
+	# generating coarsed image for faster processing
+	I_coarsed = coarse_image(I)
+	w, h = I_coarsed.size
 	
-	borders = find_borders(graph_partition, w, h)
+	graph_partition = spectral_segmentation(I_coarsed, smallest_segment_size)
+	
+	# scaling partition to original image dimensions
+	scaled_partition = scale_partition(graph_partition, w, h, w_, h_)
+	
+	borders = find_borders(scaled_partition, w_, h_)
 	
 	return draw_segmentation(filename, borders) #saving copy of image with borders drawn

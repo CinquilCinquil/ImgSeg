@@ -1,6 +1,6 @@
 from image_segmentation import image_segmentation
 
-filename = "test_files/test4.png"
+filename = "test_files/test1.png"
 smallest_segment_size = 256
 
 print("--------------------------")

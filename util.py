@@ -1,5 +1,5 @@
-import random as rnd
 import numpy as np
+from PIL import Image # Python library for image processing
 
 
 def get_value(t):
@@ -126,6 +126,75 @@ def find_borders(S, w, h):
 			borders.append(i)
 		
 	return borders
+	
+def coarse_image(I, new_w = 32):
+
+	"""
+	Returns image with lower resolution using Bicubic Interpolation
+	"""
+	
+	w, h = I.size
+	
+	new_h = int(new_w * (h/w))
+	
+	return I.resize((new_w, new_h), Image.Resampling.BICUBIC)
+	
+def scale_partition(S, old_w, old_h, w, h):
+
+	"""
+	Returns partition scaled up
+	"""
+	
+	#
+	def add_to_part(a, b):
+		if not isinstance(S[0], list):
+			
+			if b in S:
+				S.append(str(a))
+			
+			return
+			
+		for s in S:
+			add_to_part(a, b)
+		
+	#
+	for i in range(w):
+		for j in range(h):
+			i_ = i // old_w
+			j_ = j // old_h
+			
+			add_to_part(i + j*w, i_ + j_*old_h)
+		
+	#
+	def remove_ints(S):
+		if not isinstance(S[0], list):
+			
+			for s in S:
+				if not isinstance(s, str):
+					S.remove(s)
+			
+			return
+			
+		for s in S:
+			remove_ints(s)
+		
+	#
+	def str_to_int(S):
+		if not isinstance(S[0], list):
+			
+			for i in range(len(S)):
+				S[i] = int(S[i])
+			
+			return
+			
+		for s in S:
+			str_to_int(s)
+	
+	remove_ints(S)	
+	str_to_int(S)
+	
+	return S
+	
 
 def print_mat(I):
 	
