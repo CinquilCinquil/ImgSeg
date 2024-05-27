@@ -1,7 +1,6 @@
 Timer inicializado.
 Imagem aberta.
 Imagem em menor resolução feita.
-Valores da imagem extraídos.
 Matriz gradiente da imagem feita.
 Grafo feito simples feito.
 Peso das arestas calculado.
@@ -37,4 +36,4 @@ Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 7.018701076507568 segundos.
+Execução finalizada após 7.305778503417969 segundos.
