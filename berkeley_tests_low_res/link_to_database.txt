@@ -1,0 +1,7 @@
+Link to the Database:
+
+https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/
+
+More especifically, these images where taken from:
+
+https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/BSDS300/html/dataset/images/gray/test-001-025.html

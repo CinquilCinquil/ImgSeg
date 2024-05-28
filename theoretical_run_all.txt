@@ -1,0 +1,4 @@
+import os
+
+for f in os.listdir("berkeley_tests/"):
+    os.system("python3 main.py " + f)
