@@ -193,23 +193,6 @@ def draw_segmentation(filename, borders):
 	
 	return new_name
 
-def fuuuck(S):
-	parts = []
-	
-	def flatten(S):
-	
-		# arrived at a leaf
-		if not isinstance(S[0], list):
-			parts.append(S)
-			return
-		
-		for s in S:
-			flatten(s)
-			
-	flatten(S)
-
-	return parts
-
 def image_segmentation(filename, smallest_segment_size = 256):
 
 	start_time = time.time()
@@ -232,20 +215,17 @@ def image_segmentation(filename, smallest_segment_size = 256):
 	
 	report("Partição espectral do grafo feita.", report_list)
 
-	borders = find_borders(fuuuck(graph_partition), w, h) #
-	
 	# scaling partition to original image dimensions
-	scaled_partition, borders = scale_partition(graph_partition, w, h, w_, h_, borders)
+	scaled_partition = scale_partition(graph_partition, w, h, w_, h_)
 	
 	report("Tamanho da partição aumentado para imagem original.", report_list)
-
-	new_borders = erode_borders(borders, w_, h_) #
 	
-	#borders = find_borders(scaled_partition, w_, h_)
+	borders = find_borders(scaled_partition, w_, h_)
 	
 	report("Bordas das partições feitas.", report_list)
 	
-	final_image_name = draw_segmentation(filename, new_borders) #saving copy of image with borders drawn
+	#saving copy of image with borders drawn
+	final_image_name = draw_segmentation(filename, borders)
 	
 	report("Execução finalizada após " + str((time.time() - start_time)) + " segundos.", report_list)
 	

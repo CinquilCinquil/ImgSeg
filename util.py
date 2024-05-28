@@ -33,64 +33,15 @@ def define_grad(img):
 		) for j in range(w)] for i in range(h)]
 	
 	return G
-	
-taskeru = []
-
-def erode_borders(S, w, h):
-
-	print(len(S))
-
-	matriz_legal = [[0 for j in range(w)] for i in range(h)]
-
-	# returns the image coordinates (i.e. (x, y)) from a pixel id
-	def coord(v):
-		return (int(v - w*(v//w)), int(v//w))
-	
-	for s in S:
-		j, i = coord(s)
-		matriz_legal[i][j] = 1
-	
-	# returns whether a and b are in different parts
-	def dif(a):
-		return matriz_legal[a[1]][a[0]]
-	
-	def neighbour_count(v):
-		i, j = coord(v)
-
-		k = 1
-
-		#
-		val_right = 		dif((i + k, j)) if i < w - k else 1
-		val_left = 			dif((i - k, j)) if i > 0 else 1
-		val_top = 			dif((i, j - k)) if j > 0 else 1
-		val_bottom = 		dif((i, j + k)) if j < h - k else 1
-		val_upright = 		dif((i + k, j - k)) if j > 0 and i < w - k else 1
-		val_upleft = 		dif((i - k, j - k)) if j > 0 and i > 0 else 1
-		val_bottomright = 	dif((i + k, j + k)) if j < h - k and i < w - k else 1
-		val_bottomleft = 	dif((i - k, j + k)) if j < h - k and i > 0 else 1
-		
-		#return (val_right + val_left + val_top + val_bottom + val_upright + val_upleft
-		#		+ val_bottomright + val_bottomleft)
-
-		return (val_right + val_left + val_top + val_bottom)
-	
-	new_S = []
-
-	for s in S:
-		n = neighbour_count(s)
-		if n == 4 or n <= 2:
-			new_S.append(s)
-
-	if len(new_S) - len(S) != 0:
-		return erode_borders(new_S, w, h)
-	else:
-		return S
 
 def find_borders(S, w, h):
 
 	"""
 	Returns the borders of a partition of S
 	"""
+
+	# Matrix of the image representing the partition
+	part_matrix = [[-1 for j in range(w)] for i in range(h)]
 	
 	# Local utils
 	
@@ -100,40 +51,46 @@ def find_borders(S, w, h):
 	
 	# returns whether a and b are in different parts
 	def dif(a, b):
-		a = a[0] + a[1]*w # converting back to pixel id
-		return any([(a in s and b not in s) for s in S])
-
+		return part_matrix[a[1]][a[0]] != part_matrix[b[1]][b[0]]
 	
 	# returns if pixel is in a border
 	def in_border(v):
 		i, j = coord(v)
+		v = (i, j)
 		
 		# checking if any of the neighbours are in different parts
-		val_right = 		dif((i + 1, j), v) if i < w - 1 else False
+		val_right = dif((i + 1, j), v) if i < w - 1 else False
 
 		if not val_right:
-			val_left = 			dif((i - 1, j), v) if i > 0 else False
+			val_left = dif((i - 1, j), v) if i > 0 else False
 
 			if not val_left:
-				val_top = 			dif((i, j - 1), v) if j > 0 else False
+				val_top = dif((i, j - 1), v) if j > 0 else False
 
 				if not val_top:
-					val_bottom = 		dif((i, j + 1), v) if j < h - 1 else False
+					val_bottom = dif((i, j + 1), v) if j < h - 1 else False
 
 					if not val_bottom:
-						val_upright = 		dif((i + 1, j - 1), v) if j > 0 and i < w - 1 else False
+						val_upright = dif((i + 1, j - 1), v) if j > 0 and i < w - 1 else False
 
 						if not val_upright:
-							val_upleft = 		dif((i - 1, j - 1), v) if j > 0 and i > 0 else False
+							val_upleft = dif((i - 1, j - 1), v) if j > 0 and i > 0 else False
 
 							if not val_upleft:
-								val_bottomright = 	dif((i + 1, j + 1), v) if j < h - 1 and i < w - 1 else False
+								val_bottomright = dif((i + 1, j + 1), v) if j < h - 1 and i < w - 1 else False
 
 								if not val_bottomright:
-									val_bottomleft = 	dif((i - 1, j + 1), v) if j < h - 1 and i > 0 else False
+									val_bottomleft = dif((i - 1, j + 1), v) if j < h - 1 and i > 0 else False
 		
 		return (val_right or val_left or val_top or val_bottom or val_upright or val_upleft
 				or val_bottomright or val_bottomleft)
+
+
+	# Filling part_matrix
+	for k in range(len(S)):
+		for p in S[k]:
+			j, i = coord(p)
+			part_matrix[i][j] = k
 
 	# Initializing algorithm
 
@@ -156,7 +113,7 @@ def coarse_image(I, new_h = 32):
 	
 	return I.resize((new_w, new_h), Image.BICUBIC)
 	
-def scale_partition(S, old_w, old_h, w, h, borders_):
+def scale_partition(S, old_w, old_h, w, h):
 
 	"""
 	Returns partition scaled up
@@ -164,7 +121,6 @@ def scale_partition(S, old_w, old_h, w, h, borders_):
 
 	# Turning tree into a list of parts
 	parts = []
-	mapa_legal = {}
 	
 	def flatten(S):
 	
@@ -185,11 +141,7 @@ def scale_partition(S, old_w, old_h, w, h, borders_):
 
 		for i in range(len(parts)):
 			if old_p in parts[i]:
-				S_new[i].append(new_p)
-
-				if old_p in borders_:
-					taskeru.append(new_p)
-				
+				S_new[i].append(new_p)			
 				break
 
 	w_r = w / old_w
@@ -203,7 +155,7 @@ def scale_partition(S, old_w, old_h, w, h, borders_):
 			
 			add_to_part(i + j*w, i_ + j_*old_w)
 	
-	return (S_new, taskeru)
+	return S_new
 	
 
 def print_mat(I):
