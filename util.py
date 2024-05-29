@@ -42,6 +42,8 @@ def find_borders(S, w, h):
 
 	# Matrix of the image representing the partition
 	part_matrix = [[-1 for j in range(w)] for i in range(h)]
+
+	test_file = open("test_file.txt", 'w+')
 	
 	# Local utils
 	
@@ -59,16 +61,20 @@ def find_borders(S, w, h):
 		v = (i, j)
 		
 		# checking if any of the neighbours are in different parts
-		val_right = dif((i + 1, j), v) if i < w - 1 else False
+		#val_right = dif((i + 1, j), v) if i < w - 1 else False
+		val_right = False
 
 		if not val_right:
-			val_left = dif((i - 1, j), v) if i > 0 else False
+			#val_left = dif((i - 1, j), v) if i > 0 else False
+			val_left = False
 
 			if not val_left:
-				val_top = dif((i, j - 1), v) if j > 0 else False
+				#val_top = dif((i, j - 1), v) if j > 0 else False
+				val_top = False
 
 				if not val_top:
-					val_bottom = dif((i, j + 1), v) if j < h - 1 else False
+					#val_bottom = dif((i, j + 1), v) if j < h - 1 else False
+					val_bottom = False
 
 					if not val_bottom:
 						val_upright = dif((i + 1, j - 1), v) if j > 0 and i < w - 1 else False
@@ -91,6 +97,8 @@ def find_borders(S, w, h):
 		for p in S[k]:
 			j, i = coord(p)
 			part_matrix[i][j] = k
+
+	test_file.write(print_mat(part_matrix, False))
 
 	# Initializing algorithm
 
@@ -142,7 +150,7 @@ def scale_partition(S, old_w, old_h, w, h):
 		for i in range(len(parts)):
 			if old_p in parts[i]:
 				S_new[i].append(new_p)			
-				break
+				return
 
 	w_r = w / old_w
 	h_r = h / old_h
@@ -158,23 +166,27 @@ def scale_partition(S, old_w, old_h, w, h):
 	return S_new
 	
 
-def print_mat(I):
+def print_mat(I, print_on_console = True):
 	
 	"""
 	Prints a matrix
 	"""
+
+	def print_(txt, arg1 = ""):
+		if print_on_console:
+			print(txt, end = arg1)
 	
 	return_str = ""
 
 	for i in range(len(I)):
 		for j in range(len(I[i])):
-			print(I[i][j], end = ' ')
+			print_(I[i][j], ' ')
 			return_str += str(I[i][j]) + " "
 		
-		print("")
+		print_("")
 		return_str += "\n"
 	
-	print("")
+	print_("")
 	return_str += "\n"
 	
 	return return_str

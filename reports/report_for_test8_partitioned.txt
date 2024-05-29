@@ -10,32 +10,28 @@ Executando partição recursiva:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 852
+-- Tamanho da partição a ser analisada: 690
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 141
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 711
+-- Tamanho da partição a ser analisada: 335
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 5
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 706
+-- Tamanho da partição a ser analisada: 355
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 172
--- Partição pequena demais, caso base antigido.
+-- Tamanho da partição a ser analisada: 334
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
 Partição espectral do grafo feita.
 Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 4.371808767318726 segundos.
+Execução finalizada após 3.2762680053710938 segundos.

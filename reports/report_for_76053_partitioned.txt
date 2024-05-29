@@ -10,70 +10,86 @@ Executando partição recursiva:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 851
+-- Tamanho da partição a ser analisada: 742
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 479
+-- Tamanho da partição a ser analisada: 244
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 498
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 134
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 345
+-- Tamanho da partição a ser analisada: 352
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 98
+-- Tamanho da partição a ser analisada: 80
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 247
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 372
+-- Tamanho da partição a ser analisada: 272
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 175
+-- Tamanho da partição a ser analisada: 92
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 197
+-- Tamanho da partição a ser analisada: 180
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 653
+-- Tamanho da partição a ser analisada: 146
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 762
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 490
+-- Tamanho da partição a ser analisada: 416
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 129
+-- Tamanho da partição a ser analisada: 153
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 361
+-- Tamanho da partição a ser analisada: 263
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 168
+-- Tamanho da partição a ser analisada: 238
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 193
+-- Tamanho da partição a ser analisada: 25
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 163
+-- Tamanho da partição a ser analisada: 346
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 52
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 294
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 79
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 215
 -- Partição pequena demais, caso base antigido.
 Partição espectral do grafo feita.
 Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 9.250683307647705 segundos.
+Execução finalizada após 10.58897852897644 segundos.

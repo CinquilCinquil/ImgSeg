@@ -10,12 +10,47 @@ Executando partição recursiva:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 851
+-- Tamanho da partição a ser analisada: 707
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 479
+-- Tamanho da partição a ser analisada: 285
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 192
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 93
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 422
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 122
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 300
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 93
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 207
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 797
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 422
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
@@ -23,57 +58,38 @@ Executando partição recursiva:
 -- Tamanho da partição a ser analisada: 134
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 345
+-- Tamanho da partição a ser analisada: 288
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 98
+-- Tamanho da partição a ser analisada: 198
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 247
+-- Tamanho da partição a ser analisada: 90
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 372
+-- Tamanho da partição a ser analisada: 375
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 175
+-- Tamanho da partição a ser analisada: 71
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 197
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 653
+-- Tamanho da partição a ser analisada: 304
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 490
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 129
+-- Tamanho da partição a ser analisada: 190
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 361
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 168
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 193
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 163
+-- Tamanho da partição a ser analisada: 114
 -- Partição pequena demais, caso base antigido.
 Partição espectral do grafo feita.
 Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 9.250683307647705 segundos.
+Execução finalizada após 9.977898836135864 segundos.

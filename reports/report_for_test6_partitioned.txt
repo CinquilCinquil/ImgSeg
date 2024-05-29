@@ -5,52 +5,17 @@ Matriz gradiente da imagem feita.
 Grafo feito simples feito.
 Peso das arestas calculado.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 1504
+-- Tamanho da partição a ser analisada: 1024
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 851
+-- Tamanho da partição a ser analisada: 972
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 479
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 134
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 345
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 98
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 247
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 372
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 175
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 197
--- Partição pequena demais, caso base antigido.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 653
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 490
+-- Tamanho da partição a ser analisada: 953
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
@@ -58,22 +23,49 @@ Executando partição recursiva:
 -- Tamanho da partição a ser analisada: 129
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 361
+-- Tamanho da partição a ser analisada: 824
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 168
+-- Tamanho da partição a ser analisada: 190
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 193
+-- Tamanho da partição a ser analisada: 634
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 293
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 121
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 163
+-- Tamanho da partição a ser analisada: 172
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 341
+-- Matriz Laplaciana criada:
+-- Vetor de Fiedler calculado:
+-- Vetores particionados.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 195
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 146
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 19
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 52
 -- Partição pequena demais, caso base antigido.
 Partição espectral do grafo feita.
 Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 9.250683307647705 segundos.
+Execução finalizada após 6.243386745452881 segundos.

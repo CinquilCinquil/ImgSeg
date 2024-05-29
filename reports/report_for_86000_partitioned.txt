@@ -5,37 +5,35 @@ Matriz gradiente da imagem feita.
 Grafo feito simples feito.
 Peso das arestas calculado.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 1024
+-- Tamanho da partição a ser analisada: 672
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 852
+-- Tamanho da partição a ser analisada: 319
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 141
+-- Tamanho da partição a ser analisada: 221
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 711
--- Matriz Laplaciana criada:
--- Vetor de Fiedler calculado:
--- Vetores particionados.
-Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 5
+-- Tamanho da partição a ser analisada: 98
 -- Partição pequena demais, caso base antigido.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 706
+-- Tamanho da partição a ser analisada: 353
 -- Matriz Laplaciana criada:
 -- Vetor de Fiedler calculado:
 -- Vetores particionados.
 Executando partição recursiva: 
--- Tamanho da partição a ser analisada: 172
+-- Tamanho da partição a ser analisada: 125
+-- Partição pequena demais, caso base antigido.
+Executando partição recursiva: 
+-- Tamanho da partição a ser analisada: 228
 -- Partição pequena demais, caso base antigido.
 Partição espectral do grafo feita.
 Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 4.371808767318726 segundos.
+Execução finalizada após 2.205958366394043 segundos.

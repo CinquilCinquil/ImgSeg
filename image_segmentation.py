@@ -1,6 +1,6 @@
 import time
 import numpy as np
-from PIL import Image # Python library for image processing
+from PIL import Image, ImageFilter # Python library for image processing
 
 from util import *  # Local library of utility functions
 
