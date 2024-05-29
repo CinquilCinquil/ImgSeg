@@ -42,8 +42,6 @@ def find_borders(S, w, h):
 
 	# Matrix of the image representing the partition
 	part_matrix = [[-1 for j in range(w)] for i in range(h)]
-
-	test_file = open("test_file.txt", 'w+')
 	
 	# Local utils
 	
@@ -97,8 +95,6 @@ def find_borders(S, w, h):
 		for p in S[k]:
 			j, i = coord(p)
 			part_matrix[i][j] = k
-
-	test_file.write(print_mat(part_matrix, False))
 
 	# Initializing algorithm
 
