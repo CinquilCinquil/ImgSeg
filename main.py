@@ -43,7 +43,7 @@ if state == 2:
 		sys.exit(0)
 
 	print("--------------------------")
-	print("Processando... Esse processo é O(n) então por favor tenha paciência.")
+	print("Processando... Esse processo é O(n^3 log n) então por favor tenha paciência.")
 	print("--------------------------\n")
 
 	generatedfile_name, reportfile_name = image_segmentation(filename, smallest_segment_size)
