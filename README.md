@@ -1,5 +1,9 @@
 # Repositório para o 3° trabalho da disciplina de Grafos (DIM0549 - T01 - 2024.1) da UFRN.
 
+Aluno: Carlos Eduardo. Matrícula: 20220041017.
+
+#
+
 O objetivo deste programa é, dada uma imagem, segmentá-la de modo a destacar elementos. Este algoritmo utiliza conhecimentos da Teoria Espectral dos Grafos e foi fortemente inspirado na proposta apresentada em [*Spectral Image Segmentation using Image Decomposition and Inner Product-based metric*](https://sites.icmc.usp.br/apneto/pub/spectral_jmiv13.pdf) por Wallace Casaca et al.
 
 ## Execução
