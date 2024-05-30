@@ -75,7 +75,7 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 			E.append((j + w*i, j + w*(i + 1) + 1)) # \
 			E.append((j + w*(i + 1), j + w*i + 1)) # /
 			
-	report("Grafo feito simples feito.", report_list)
+	report("Grafo simples feito.", report_list)
 	
 	## Calculating edge weights
 	
