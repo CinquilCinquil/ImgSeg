@@ -7,16 +7,20 @@ O objetivo deste programa é, dada uma imagem, segmentá-la de modo a destacar e
 
 ## Execução
 
+### Método 1
 Para utilizar o programa, execute o arquivo ```main.py``` com um interpretador Python com versão 3.10 ou acima.
 Sugestões de comandos de execução: ```python main.py``` ou ```python3 main.py```.
 
 São necessárias as seguintes bibliotecas externas: `numpy`, `Python Imaging Library (PIL)` e `scipy`.
 
+### Método 2
 No Windows, há também a opção de rodar o executável `main.exe`, não necessitando de um interpretador Python nem das bibliotecas externas. Sugestão de comando de execução: `./main.exe`.
 
 Similarmente, no Linux, tem-se a seguinte sugestão de comando: `./main_linux`. 
 
-Após executar o programa, um menu deve aparecer com instruções de como escolher uma imagem para teste. (Dica: caso não queira abrir o menu toda vez, há também a possibilidade de passar como argumento na linha de comando a imagem desejada, por exemplo: `python main.py test_files/test1.png`).
+### Após execução
+
+Após executar o programa, um menu deve aparecer com instruções de como escolher uma imagem para teste. (Dica: caso não queira abrir o menu toda vez, há um terceiro método de execução similar ao Método 1:  `python main.py <caminho da imagem>`).
 
 Os resultados são salvos em `results` e os relatórios de execução em `reports`.
 
