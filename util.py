@@ -58,36 +58,20 @@ def find_borders(S, w, h):
 		i, j = coord(v)
 		v = (i, j)
 		
-		# checking if any of the neighbours are in different parts
-		#val_right = dif((i + 1, j), v) if i < w - 1 else False
-		val_right = False
+		# checking if any of the diagonal neighbours are in different parts
 
-		if not val_right:
-			#val_left = dif((i - 1, j), v) if i > 0 else False
-			val_left = False
+		val_upright = dif((i + 1, j - 1), v) if j > 0 and i < w - 1 else False
 
-			if not val_left:
-				#val_top = dif((i, j - 1), v) if j > 0 else False
-				val_top = False
+		if not val_upright:
+			val_upleft = dif((i - 1, j - 1), v) if j > 0 and i > 0 else False
 
-				if not val_top:
-					#val_bottom = dif((i, j + 1), v) if j < h - 1 else False
-					val_bottom = False
+			if not val_upleft:
+				val_bottomright = dif((i + 1, j + 1), v) if j < h - 1 and i < w - 1 else False
 
-					if not val_bottom:
-						val_upright = dif((i + 1, j - 1), v) if j > 0 and i < w - 1 else False
-
-						if not val_upright:
-							val_upleft = dif((i - 1, j - 1), v) if j > 0 and i > 0 else False
-
-							if not val_upleft:
-								val_bottomright = dif((i + 1, j + 1), v) if j < h - 1 and i < w - 1 else False
-
-								if not val_bottomright:
-									val_bottomleft = dif((i - 1, j + 1), v) if j < h - 1 and i > 0 else False
-		
-		return (val_right or val_left or val_top or val_bottom or val_upright or val_upleft
-				or val_bottomright or val_bottomleft)
+				if not val_bottomright:
+					val_bottomleft = dif((i - 1, j + 1), v) if j < h - 1 and i > 0 else False
+	
+		return val_upright or val_upleft or val_bottomright or val_bottomleft
 
 
 	# Filling part_matrix

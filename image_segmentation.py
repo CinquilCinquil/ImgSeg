@@ -14,7 +14,7 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 	with the objective of highlighting elements present on it.
 	
 	The partition is a set of sets of pixel ids.
-	A pixel id is the index of a pixel in an image counting from 
+	A pixel index is the index of a pixel in an image counting from 
 	left to right, top to bottom.
 	
 	This algorithm relies on knowledge from the field of 
@@ -43,11 +43,11 @@ def spectral_segmentation(img, smallest_segment_size = 256):
 	
 	### Local utility functions
 	
-	# returns the image coordinates (i.e. (x, y)) from a pixel id
+	# returns the image coordinates (i.e. (x, y)) from a pixel index
 	def coord(p):
 		return (int(p - w*(p//w)), int(p//w))
 		
-	# returns the gradient value from a pixel id
+	# returns the gradient value from a pixel index
 	def grad_at(p):
 		j, i = coord(p)
 		return grad[i][j]
