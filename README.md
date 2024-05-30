@@ -9,6 +9,8 @@ Sugestões de comandos de execução: ```python main.py``` ou ```python3 main.py
 
 São necessárias as seguintes bibliotecas externas: `numpy`, `Python Imaging Library (PIL)` e `scipy`.
 
+Há também a opção de rodar o executável `main.exe`, não necessitando de um interpretador Python nem das bibliotecas externas. Sugestão de comando de execução: `./main.exe`.
+
 Após executar o programa, um menu deve aparecer com instruções de como escolher uma imagem para teste. (Dica: caso não queira abrir o menu toda vez, há também a possibilidade de passar como argumento na linha de comando a imagem desejada, por exemplo: `python main.py test_files/test1.png`).
 
 Os resultados são salvos em `results` e os relatórios de execução em `reports`.

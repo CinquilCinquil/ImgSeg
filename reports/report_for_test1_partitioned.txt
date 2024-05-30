@@ -38,4 +38,4 @@ Tamanho da partição aumentado para imagem original.
 Bordas das partições feitas.
 Bordas desenhadas.
 Imagem final salva.
-Execução finalizada após 4.178921937942505 segundos.
+Execução finalizada após 4.045251846313477 segundos.
