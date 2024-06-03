@@ -14,7 +14,7 @@ Sugestões de comandos de execução: ```python main.py``` ou ```python3 main.py
 São necessárias as seguintes bibliotecas externas: `numpy`, `Python Imaging Library (PIL)` e `scipy`.
 
 ### Método 2
-No Windows, há também a opção de rodar o executável `main.exe`, não necessitando de um interpretador Python nem das bibliotecas externas. Sugestão de comando de execução: `./main.exe`.
+No Windows, há também a opção de rodar o executável `main.exe`, não necessitando de um interpretador Python nem das bibliotecas externas. Sugestão de comando de execução: `.\main.exe`.
 
 Similarmente, no Linux, tem-se a seguinte sugestão de comando: `./main_linux`. 
 
